@@ -1,16 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Button, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
+import '@mantine/dropzone/styles.css';
+import App from './pages/App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <MantineProvider>
+    <App></App>
+  </MantineProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
