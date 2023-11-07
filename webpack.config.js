@@ -1,10 +1,24 @@
 module.exports = {
-    module: {
-      rules: [
-        {
-          test: /\.css$/,
-          use: [ 'style-loader', 'postcss-loader' ]
-        }
-      ]
-    }
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
+      }
+    ]
   }
+}

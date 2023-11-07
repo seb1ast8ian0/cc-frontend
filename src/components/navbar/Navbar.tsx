@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Center, Tooltip, UnstyledButton, Stack, rem, Anchor} from '@mantine/core';
 import {
   IconHome2,
-  IconDashboard,
   IconLogout,
-  IconPlus
+  IconSquareRoundedPlus
 } from '@tabler/icons-react';
 import classes from './Navbar.module.css';
 import logo from '../../logo.png'
+import { useAuth } from '../auth/AuthProvider';
 
 interface NavbarLinkProps {
   icon: typeof IconHome2;
@@ -22,7 +22,7 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
       <UnstyledButton onClick={onClick} className={classes.link} data-active={active || undefined}>
-        <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
+        <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.8} />
       </UnstyledButton>
     </Tooltip>
   );
@@ -30,14 +30,19 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 
 const linksData = [
   { icon: IconHome2, label: 'Meine Bilder', path: '/'},
-  { icon: IconPlus, label: 'Hinzufügen', path: '/add'}
+  { icon: IconSquareRoundedPlus, label: 'Erstellen', path: '/add'}
 ];
 
 export function Navbar() {
 
   const [active, setActive] = useState(2);
-  let navigate = useNavigate();
-  let location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { onLogout } = useAuth();
+
+  function logout(){
+    onLogout();
+  }
   
 
   const links = linksData.map((link, index) => {
@@ -48,7 +53,7 @@ export function Navbar() {
     return <NavbarLink
       {...link}
       key={link.label}
-      active={location.pathname == link.path}
+      active={location.pathname === link.path}
       onClick={() => {
         setActive(index);
         navigate(link.path);
@@ -71,7 +76,7 @@ export function Navbar() {
       </div>
 
       <Stack justify="center" gap={0}>
-        <NavbarLink icon={IconLogout} label="Logout" path='/logout' />
+        <NavbarLink icon={IconLogout} label="Logout" path='/auth/login' onClick={() => logout()} />
       </Stack>
     </nav>
   );

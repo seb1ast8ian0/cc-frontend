@@ -1,21 +1,17 @@
 import { useRef } from 'react';
-import { motion } from "framer-motion"
-import { Text, Group, Button, rem, useMantineTheme } from '@mantine/core';
+import { Text, Group, Button, rem, useMantineTheme, TextInput, Container, Flex } from '@mantine/core';
 import { Dropzone } from '@mantine/dropzone';
-import { IconCloudUpload, IconX, IconDownload } from '@tabler/icons-react';
-import classes from './Add.module.css'
+import { IconCloudUpload, IconX, IconDownload, IconPlus } from '@tabler/icons-react';
+import classes from './AddScreen.module.css'
 
-function Add() {
+function AddScreen() {
 
     const theme = useMantineTheme();
     const openRef = useRef<() => void>(null);
 
     return (
-        <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}>
-            <h1>Neue Bilder</h1>
+        <Container pl={0} ml={0}>
+            <h1>Neuer Beitrag</h1>
             <div className={classes.wrapper}>
                 <Dropzone
                     openRef={openRef}
@@ -50,18 +46,29 @@ function Add() {
                         <Dropzone.Reject>Dateien weniger als 30mb</Dropzone.Reject>
                         <Dropzone.Idle>Hochladen</Dropzone.Idle>
                     </Text>
-                    <Text ta="center" fz="sm" mt="xs" c="dimmed">
-                        Drag&apos;n&apos;drop deine Dateien hier um sie hochzuladen. Wir können nur Dateien mit weniger als 30mb Größe akzeptieren.
-                    </Text>
                     </div>
                 </Dropzone>
-
                 <Button className={classes.control} size="md" radius="xl" onClick={() => openRef.current?.()}>
-                    Wähle Dateien
+                    Wähle Bilder
                 </Button>
             </div>
-        </motion.div>
+            <TextInput
+                label="Beschreibung"
+                placeholder="Was gib es zu sehen?"
+            />
+            <Flex justify="flex-end">
+                <Button
+                    justify="right"
+                    variant="gradient"
+                    gradient={{ from: 'blue', to: 'blue', deg: 52 }}
+                    radius="xl"
+                    mt="md">
+                    Hinzufügen
+                </Button>
+            </Flex>
+            
+        </Container>
     );
   }
   
-  export default Add;
+  export default AddScreen;

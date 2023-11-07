@@ -1,0 +1,73 @@
+.add{
+    width: 100%;
+    height: 100%;
+
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px dashed var(--mantine-color-gray-4);
+    border-radius: var(--mantine-radius-md);
+    transition: all 0.1s ease-in-out;
+    
+}
+
+.add:hover{
+    background-color: var(--mantine-color-gray-0);
+}
+
+.add svg {
+    stroke: black;
+}
+
+.user{
+    display: flex;
+    justify-content: center;
+}
+
+.userWrapper{
+    margin: auto 0;
+}
+
+.highlight {
+    position: relative;
+    font-weight: 500;
+    color: var(--mantine-color-blue-light-color);
+    background-color: var(--mantine-color-blue-light);
+    border-radius: var(--mantine-radius-sm);
+    padding: 4px 12px;
+}
+
+.postPreview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 140px;
+    background-color: aliceblue;
+    border-radius: var(--mantine-radius-md);
+    overflow: hidden;
+    transition: all 0.1s ease-in-out;
+}
+
+.postPreview img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postPreview::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    transition: all 0.1s ease-in-out;
+}
+
+.postPreview:hover::after{
+    background-color: rgba(0, 0, 0, 0.5);
+}

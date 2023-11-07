@@ -1,0 +1,32 @@
+.wrapper {
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url(https://images.unsplash.com/photo-1542038293217-be07b2763d45?auto=format&fit=crop&q=80&w=2574&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+}
+
+.titleWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.form {
+
+    border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    min-height: 100vh;
+    max-width: 450px;
+    padding-top: 80px;
+    
+
+    @media(max-width: 48em) {
+        max-width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+}
+  
+.title {
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    font-family: Greycliff CF, var(--mantine-font-family);
+    margin-top: 0;
+}
